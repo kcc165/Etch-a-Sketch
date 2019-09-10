@@ -6,11 +6,21 @@ for (let i = 0; i < Math.pow(size, 2); i++){
     div.setAttribute("style", `border: 1px solid black; float: left; width: ${percentage(size)}%; height: ${percentage(size)}%`);
     container.appendChild(div);
 }
-container.addEventListener("mouseover", (e) => {
-    console.log(e.target);
-    e.target.style.backgroundColor = "black";
-    
-    
+const gridDiv = document.querySelectorAll("div.grid");
+gridDiv.forEach((div) => {
+    div.addEventListener("mouseover", (e) => {
+        e.target.classList.add("black");
+    });
+});
+
+
+const button = document.querySelector("#clear");
+
+
+button.addEventListener("click", () => {
+    gridDiv.forEach((div) => {
+        div.classList.remove("black");
+    });
 });
 
 function percentage(number){
